@@ -1,109 +1,125 @@
-<h1 align="center">StreamFlix-Hibernate</h1>
+# StreamFlix Hibernate
 
-<p align="center">A Netflix-inspired backend project built with Java, Hibernate ORM, PostgreSQL, and Maven. The goal of this project is to gain a deep understanding of Hibernate by implementing real-world entity relationships, database mappings, transactions, lazy loading, cascading, and query optimization techniques used in modern applications.</p>
+<p align="center">
+  A Netflix-inspired Java backend project for learning Hibernate ORM with PostgreSQL.
+</p>
 
-## Links
+<p align="center">
+  <a href="https://github.com/shiv10000/StreamFlix-Hibernate">Repository</a>
+  ·
+  <a href="https://github.com/shiv10000/StreamFlix-Hibernate/issues">Report an issue</a>
+</p>
 
-- [Repo](https://github.com/shiv10000/StreamFlix-Hibernate "StreamFlix-Hibernate Repo")
+## Overview
 
-- [Live](# "Live View")
+StreamFlix Hibernate is a small backend learning project that models a streaming platform domain with Java, Hibernate ORM, Maven, and PostgreSQL. It focuses on practical Hibernate concepts such as annotated entities, relationships, sessions, transactions, and simple queries.
 
-- [Bugs](https://github.com/shiv10000/StreamFlix-Hibernate/issues "Issues Page")
+The current domain includes users, movies, reviews, and subscriptions. The application is designed as a command-line/IDE-run project rather than a web application.
 
-- [API](# "API")
+> [!NOTE]
+> This project does not include a frontend or screenshots. It is focused on backend persistence and Hibernate mapping examples.
 
-## Screenshots
+## Features
 
-Screenshots are not available yet because this is a backend learning project.
+- Hibernate ORM setup with PostgreSQL
+- Annotated JPA entities for a streaming-style domain
+- Entity relationships:
+  - `User` to `Subscription`
+  - `User` to `Review`
+  - `Movie` to `Review`
+- Transaction examples using `SessionFactory#inTransaction`
+- Example inserts and queries from the application entry point
+- Environment-specific database configuration through `hibernate.properties`
 
-![Home Page](/screenshots/1.png "Home Page")
+## Tech Stack
 
-![](/screenshots/2.png)
+| Tool | Purpose |
+| --- | --- |
+| Java 25 | Application runtime and language |
+| Maven | Dependency management and build tooling |
+| Hibernate ORM 7 | Object-relational mapping |
+| PostgreSQL | Relational database |
+| JDBC PostgreSQL Driver | Database connectivity |
 
-![](/screenshots/3.png)
+## File Structure
 
-## About The Project
+```text
+hibernate-netflix-clone/
+├── pom.xml
+├── README.md
+└── src/
+    └── main/
+        ├── java/
+        │   └── org/
+        │       └── example/
+        │           ├── HibernateUtil.java
+        │           ├── Main.java
+        │           ├── Movie.java
+        │           ├── Review.java
+        │           ├── Subscription.java
+        │           └── User.java
+        └── resources/
+            ├── hibernate.properties
+            └── hibernate.properties.example
+```
 
-StreamFlix-Hibernate is a simple backend project inspired by Netflix. It focuses on how Java applications talk to a PostgreSQL database using Hibernate. The project is built step by step so the code stays easy to read while covering important backend ideas like tables, relationships, transactions, lazy loading, cascading, and queries.
+## Getting Started
 
-## Technology Used
+### Prerequisites
 
-- Java
-- Hibernate ORM
-- PostgreSQL
+- JDK 25 or compatible
 - Maven
-- JDBC PostgreSQL Driver
+- PostgreSQL running locally or remotely
 
-## End-User Manual
+### Configure the database
 
-This project does not have a web page yet. It is a backend project that runs from the command line.
+Create a PostgreSQL database, then copy the example configuration:
 
-To use it:
+```bash
+cp src/main/resources/hibernate.properties.example src/main/resources/hibernate.properties
+```
 
-1. Install Java 25 or a compatible JDK.
-2. Install Maven.
-3. Install and start PostgreSQL.
-4. Create a PostgreSQL database for the project.
-5. Add the database settings required by the application when configuration files are added.
-6. Run the project from your IDE or with Maven.
+Update `src/main/resources/hibernate.properties` with your database name, username, and password:
 
-## Available Commands
+```properties
+hibernate.connection.url=jdbc:postgresql://localhost:5432/your_database
+hibernate.connection.username=your_username
+hibernate.connection.password=your_password
+```
 
-In the project directory, you can run:
+### Build the project
 
-### `mvn compile`
+```bash
+mvn compile
+```
 
-Compiles the Java source code and downloads the required Maven dependencies.
+### Run the project
 
-### `mvn test`
+Run `org.example.Main` from your IDE, or configure the Maven Exec Plugin if you prefer running from the command line.
 
-Runs the project tests when tests are added.
+## Useful Commands
 
-### `mvn package`
+| Command | Description |
+| --- | --- |
+| `mvn compile` | Compiles the Java source files and downloads dependencies |
+| `mvn test` | Runs tests when test coverage is added |
+| `mvn package` | Builds the project artifact in `target/` |
 
-Builds the project and creates the final package in the `target` folder.
+## Project Notes
 
-### `mvn exec:java`
+- `HibernateUtil.java` creates the shared `SessionFactory`.
+- `Main.java` contains sample transaction and query flows.
+- `Movie.java`, `User.java`, `Review.java`, and `Subscription.java` define the persistence model.
+- `hibernate.properties.example` documents the expected database configuration.
 
-Runs the project from Maven when the Maven Exec Plugin is configured.
+## Roadmap
 
-## Built With
-
-- Java
-- Hibernate ORM
-- PostgreSQL
-- Maven
-- JDBC
-
-## Future Updates
-
-- [ ] Add Hibernate configuration
-- [ ] Add movie, user, subscription, and watch history entities
-- [ ] Add real PostgreSQL mappings
-- [ ] Add transaction examples
-- [ ] Add query optimization examples
-- [ ] Add tests
-
-## Contributing
-
-Contributions are welcome.
-
-To contribute:
-
-1. Fork the repository.
-2. Create a new branch for your change.
-3. Make your changes in simple, clear code.
-4. Test the project with Maven.
-5. Open a pull request with a short explanation of what changed.
+- [ ] Add more query examples
+- [ ] Add seed data helpers
+- [ ] Add tests for entity mappings
+- [ ] Add a Maven Exec Plugin run command
+- [ ] Expand relationship examples for watch history and playlists
 
 ## Author
 
-**Shivam**
-
-- [Profile](https://github.com/shiv10000 "Shivam")
-
-## Support
-
-Contributions, issues, and feature requests are welcome.
-
-Give a star if you like this project.
+Created by [Shivam](https://github.com/shiv10000).
