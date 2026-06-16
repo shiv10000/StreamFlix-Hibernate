@@ -16,8 +16,7 @@ StreamFlix Hibernate is a small backend learning project that models a streaming
 
 The current domain includes users, movies, reviews, and subscriptions. The application is designed as a command-line/IDE-run project rather than a web application.
 
-> [!NOTE]
-> This project does not include a frontend or screenshots. It is focused on backend persistence and Hibernate mapping examples.
+![StreamFlix Hibernate entity mapping](docs/entity-mapping.svg)
 
 ## Features
 
